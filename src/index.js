@@ -1,11 +1,12 @@
 const fs = require('fs-extra');
 const getFileFromUrl = require('../src/application/urlManager');
-const { getNegativeDataFrom, normalizeNegativeData } = require('../src/application/fileManager');
+const {getNegativeDataFrom, normalizeNegativeData} = require('../src/application/fileManager');
 
-(async function main (url) {
+// eslint-disable-next-line func-names
+(async function main(url) {
     const fullFileData = await getFileFromUrl(url);
     const negativeData = await getNegativeDataFrom(fullFileData);
     const horizontalData = await normalizeNegativeData(negativeData);
-    //Write result to file
+    // Write result to file
     await fs.writeFile('output.txt', horizontalData);
 })(process.argv[2]);
