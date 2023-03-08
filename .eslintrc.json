@@ -11,5 +11,7 @@
         "ecmaVersion": "latest"
     },
     "rules": {
-    }
+        "indent": ["error", 4]
+    },
+    "ignorePatterns":["**/node_modules/*", "**/dist/*", "**/build/*", "**/coverage/*", "**/docs/*", "**/examples/*", "**/test/*", "**/tes"]
 }

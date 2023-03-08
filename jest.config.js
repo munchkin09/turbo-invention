@@ -1,30 +1,26 @@
-//Jest config file
 module.exports = {
     verbose: true,
     testEnvironment: 'node',
     testMatch: [
-        '**/src/**/*.test.js'
+        '**/*.test.js',
     ],
     collectCoverage: true,
     collectCoverageFrom: [
-        'src/**/*.js'
+        'src/**/*.js',
     ],
     coverageDirectory: 'coverage',
     coverageReporters: [
         'text',
-        'lcov'
+        'lcov',
     ],
     coveragePathIgnorePatterns: [
         'node_modules',
-        'test'
+        'test',
     ],
-    reporters: [ 
+    reporters: [
         'default',
-        ['jest-junit', { outputDirectory: 'test-results' }]
+        ['jest-junit', {outputDirectory: 'test-results'}],
         ['github-actions', {silent: false}],
-        'summary'
+        'summary',
     ],
-    setupFilesAfterEnv: [
-        './test/setup.js'
-    ]
 };
