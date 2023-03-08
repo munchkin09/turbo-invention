@@ -1,0 +1,17 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es2021": true
+    },
+    "extends": "xo",
+    "overrides": [
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest"
+    },
+    "rules": {
+        "indent": ["error", 4]
+    },
+    "ignorePatterns":["**/node_modules/*", "**/dist/*", "**/build/*", "**/coverage/*", "**/docs/*", "**/examples/*", "**/test/*", "**/tes"]
+}
