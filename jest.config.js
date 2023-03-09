@@ -19,8 +19,8 @@ module.exports = {
     ],
     reporters: [
         'default',
-        ['jest-junit', {outputDirectory: 'test-results'}],
-        ['github-actions', {silent: false}],
         'summary',
+        ['jest-junit', {outputDirectory: 'test-results'}],
+        ['github-actions', {silent: false}, 'summary', 'jest-junit'],
     ],
 };
