@@ -2,7 +2,7 @@ const path = require('path');
 const axios = require('axios');
 const fs = require('fs-extra');
 
-const {getFileFromUrl} = require('../src/application/urlManager');
+const {getFileFromUrl} = require('../src/application/urlContentManager');
 
 jest.mock('axios');
 
