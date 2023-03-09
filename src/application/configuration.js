@@ -3,25 +3,26 @@ const fs = require('fs-extra');
 const defaultOptions = {
     type: 'skyline',
     style: 'ascii',
-    tabs_interpolation: 4,
+    tabsInterpolation: 4,
     spaces: 4,
     output: 'console',
 };
 
-const currentOptions = {};
-
 module.exports = {
     async checkOptions(optionsFilepath) {
+        let currentOptions = {};
         if (optionsFilepath === undefined || optionsFilepath === null) {
             console.warn('No path given. Using default options');
             return defaultOptions;
         }
 
-        if(!(await fs.fileExists(optionsFilepath))) return defaultOptions;
+        if (!(await fs.fileExists(optionsFilepath))) {
+            return defaultOptions;
+        }
 
         try {
-            currentOptions = JSON.parse((await fs.readFile(optionsFilepath, 'utf8')));
-        } catch(error) {
+            currentOptions = {...JSON.parse((await fs.readFile(optionsFilepath, 'utf8')))};
+        } catch (error) {
             console.warn('Cannot parse options file, using default options. Original error was: ', error);
             return defaultOptions;
         }
@@ -30,7 +31,7 @@ module.exports = {
             throw new Error('No output was provided');
         }
 
-        if (currentOptions.output !== 'console' && options.output !== 'file') {
+        if (currentOptions.output !== 'console' && currentOptions.output !== 'file') {
             throw new Error('Output not supported');
         }
 
@@ -50,8 +51,8 @@ module.exports = {
             currentOptions.style = defaultOptions.style;
         }
 
-        if (currentOptions.tabs_interpolation === undefined) {
-            currentOptions.tabs_interpolation = defaultOptions.tabs_interpolation;
+        if (currentOptions.tabsInterpolation === undefined) {
+            currentOptions.tabsInterpolation = defaultOptions.tabsInterpolation;
         }
 
         if (currentOptions.spaces === undefined) {
