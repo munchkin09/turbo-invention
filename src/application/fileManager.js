@@ -47,7 +47,7 @@ module.exports = {
             const swap = returnValue.concat(`${line.join('')}\n`);
             returnValue = swap;
         });
-        console.log(returnValue);
+
         return returnValue;
     },
 };
