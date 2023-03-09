@@ -9,19 +9,19 @@ const {checkOptions} = require('./application/configuration');
     const fullFileData = await getFileFromUrl(url);
     const negativeData = await getNegativeDataFrom(fullFileData, options);
     const horizontalData = await normalizeNegativeData(negativeData);
-    const hydratedHorizontalData = await hydrateHorizontalData(horizontalData); 
+    const hydratedHorizontalData = await hydrateHorizontalData(horizontalData);
 
-    ouputResult(hydratedHorizontalData, options);
+    await ouputResult(hydratedHorizontalData, options);
 })(process.argv[2]);
 
-function ouputResult(hydratedHorizontalData, options) {
-
+async function ouputResult(hydratedHorizontalData, options) {
     if (options.output === 'console') {
-        hydrateHorizontalData.forEach((line) => {
+        console.log(hydratedHorizontalData);
+        hydratedHorizontalData.forEach(line => {
             console.log(line.line);
         });
         return Promise.resolve();
-    } else {
-        return fs.writeFile('output.txt', hydratedHorizontalData);
     }
+
+    return fs.writeFile('output.txt', hydratedHorizontalData);
 }
