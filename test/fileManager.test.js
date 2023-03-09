@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs-extra');
 
-const {normalizeNegativeData, getNegativeDataFrom} = require('../src/application/fileManager');
+const {normalizeNegativeData, getNegativeDataFrom} = require('../src/application/fileParserManager');
 
 describe('File Manager', () => {
     it('should return array with negative data when a valid input is given', async () => {
