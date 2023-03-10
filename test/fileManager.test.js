@@ -16,7 +16,7 @@ describe('File Manager', () => {
         expect(result.toString()).toBe(expectedResult);
     });
 
-    it('should horizontal conversion when a valid input is given', async () => {
+    it('should output horizontal conversion when a valid input is given', async () => {
         // Given
         const input = (await fs.readFile(path.resolve('test/fixtures/expectedOutputFromNegativeData.txt'), 'utf8')).toString().split(',');
         const expectedResult = (await fs.readFile(path.resolve('test/fixtures/expectedOutputFromNormalizedData.txt'), 'utf8'));
