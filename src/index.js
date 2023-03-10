@@ -3,8 +3,11 @@ const {getFileFromUrl} = require('./application/urlContentManager');
 const {getNegativeDataFrom, normalizeNegativeData} = require('./application/fileParserManager');
 const {hydrateHorizontalData} = require('./application/pixelsHydrationManager');
 const {checkOptions} = require('./application/configuration');
-// eslint-disable-next-line func-names
-(async function main(url, optionsFilepath) {
+
+module.exports = main;
+
+async function main(url, optionsFilepath) {
+    console.log('CleanCrapper is running...');
     const options = await checkOptions(optionsFilepath);
     const fullFileData = await getFileFromUrl(url);
     const negativeData = await getNegativeDataFrom(fullFileData, options);
@@ -12,11 +15,10 @@ const {checkOptions} = require('./application/configuration');
     const hydratedHorizontalData = await hydrateHorizontalData(horizontalData);
 
     await ouputResult(hydratedHorizontalData, options);
-})(process.argv[2]);
+}
 
 async function ouputResult(hydratedHorizontalData, options) {
     if (options.output === 'console') {
-        console.log(hydratedHorizontalData);
         hydratedHorizontalData.forEach(line => {
             console.log(line.line);
         });
