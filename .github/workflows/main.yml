@@ -37,10 +37,13 @@ jobs:
           npm install
           npm run lint
           npm run test
-
-      - name: Publish Test Report
-        run: ./.github/actions/junit-parser.js
-
-        if: success() || failure() # always run even if the previous step fails
+      - name: Upload output file
+        uses: actions/upload-artifact@v3
         with:
-          junit-report: '**/build/test-results/*.xml'
+          name: junit-report
+          path: test-results/junit.xml
+
+      - name: Hello world
+        uses: ./.github/actions/junit-parser
+        with:
+          junit-report: 
