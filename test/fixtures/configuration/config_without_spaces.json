@@ -1,0 +1,6 @@
+{
+    "type": "mountain",
+    "style": "ascii",
+    "tabsInterpolation": 4,
+    "output": "console"
+}
