@@ -43,7 +43,7 @@ jobs:
           name: junit-report
           path: test-results/junit.xml
 
-      - name: Hello world
-        uses: ./.github/actions/junit-parser
+      - name: Junit parser report
+        uses: ./.github/actions/
         with:
-          junit-report: 
+          junit-report: junit-report
