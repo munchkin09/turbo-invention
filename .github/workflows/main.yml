@@ -44,6 +44,6 @@ jobs:
           path: test-results/junit.xml
 
       - name: Junit parser report
-        uses: ./.github/actions/
+        uses: ./.github/actions/junit-parser
         with:
           junit-report: junit-report

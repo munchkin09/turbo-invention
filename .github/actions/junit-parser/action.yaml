@@ -9,5 +9,5 @@ outputs:
   html-report: # id of output
     description: "Report of the test results"
 runs:
-  using: "node18"
+  using: "node16"
   main: "junit-parser.js"
