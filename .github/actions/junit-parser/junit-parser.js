@@ -1,7 +1,7 @@
-const core = require('@actions/core');
-const github = require("@actions/github");
+import core from '@actions/core';
+import github from '@actions/github';
 
-const { XMLParser, XMLBuilder } = require("fast-xml-parser");
+import { XMLParser, XMLBuilder } from 'fast-xml-parser';
 
 async function run() {
     try {
