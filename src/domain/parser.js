@@ -1,4 +1,6 @@
+
 module.exports = {
+
     async getNegativeDataFrom(fileContent) {
         // Get spaces and tabs from each line
         const result = [];
@@ -17,7 +19,7 @@ module.exports = {
         return result;
     },
 
-    async normalizeNegativeData(negativeData) {
+    normalizeNegativeData(negativeData) {
         const maxHeigth = Math.max(...negativeData);
         const result = [];
 

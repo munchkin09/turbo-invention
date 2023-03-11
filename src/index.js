@@ -1,20 +1,27 @@
 const fs = require('fs-extra');
 const {getFileFromUrl} = require('./application/urlContentManager');
-const {getNegativeDataFrom, normalizeNegativeData} = require('./application/fileParserManager');
-const {hydrateHorizontalData} = require('./application/pixelsHydrationManager');
+const parserManager = require('./application/parserManager');
+const hydratorManager = require('./application/hydratorManager');
 const {checkOptions} = require('./application/configuration');
 
 module.exports = main;
 
 async function main(url, optionsFilepath) {
-    console.log('CleanCrapper is running...');
-    const options = await checkOptions(optionsFilepath);
-    const fullFileData = await getFileFromUrl(url);
-    const negativeData = await getNegativeDataFrom(fullFileData, options);
-    const horizontalData = await normalizeNegativeData(negativeData);
-    const hydratedHorizontalData = await hydrateHorizontalData(horizontalData);
+    const {getNegativeDataFrom, normalizeNegativeData} = parserManager();
+    const {hydrateHorizontalData} = hydratorManager();
 
-    await ouputResult(hydratedHorizontalData, options);
+    console.log('CleanCrapper is running...');
+    try {
+        const options = await checkOptions(optionsFilepath);
+        const fullFileData = await getFileFromUrl(url);
+        const negativeData = await getNegativeDataFrom(fullFileData, options);
+        const horizontalData = await normalizeNegativeData(negativeData);
+        const hydratedHorizontalData = await hydrateHorizontalData(horizontalData);
+
+        await ouputResult(hydratedHorizontalData, options);
+    } catch (e) {
+        console.log(e);
+    }
 }
 
 async function ouputResult(hydratedHorizontalData, options) {

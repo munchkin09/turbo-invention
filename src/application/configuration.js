@@ -1,3 +1,5 @@
+const path = require('path');
+
 const fs = require('fs-extra');
 
 const defaultOptions = {
@@ -16,14 +18,16 @@ module.exports = {
             return defaultOptions;
         }
 
-        if (!(await fs.fileExists(optionsFilepath))) {
+        const pathToOpen = path.resolve(optionsFilepath);
+        if (!(await fs.exists(pathToOpen))) {
+            console.warn('Path given does not exists. Using default options');
             return defaultOptions;
         }
 
         try {
-            currentOptions = {...JSON.parse((await fs.readFile(optionsFilepath, 'utf8')))};
+            currentOptions = {...JSON.parse((await fs.readFile(pathToOpen, 'utf8')))};
         } catch (error) {
-            console.warn('Cannot parse options file, using default options. Original error was: ', error);
+            console.warn(`Cannot parse options file, using default options. Original error was: ${error}`);
             return defaultOptions;
         }
 
@@ -32,7 +36,7 @@ module.exports = {
         }
 
         if (currentOptions.output !== 'console' && currentOptions.output !== 'file') {
-            throw new Error('Output not supported');
+            throw new Error(`Output not supported Given: ${currentOptions.output} Supported: console, file`);
         }
 
         if (currentOptions.type === undefined) {
