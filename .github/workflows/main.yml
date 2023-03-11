@@ -14,10 +14,10 @@ on:
   workflow_dispatch:
 
 permissions:
-  lintAndTest: write-all
+  lint-and-test: write-all
   # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  lintAndTest:
+  lint-and-test:
     runs-on: ubuntu-latest
 
     steps:
