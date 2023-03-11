@@ -1,0 +1,13 @@
+name: "JUnit parser"
+description: "Just parsing test data"
+inputs:
+  junit-report: # id of input
+    description: "Junit report to parse"
+    required: true
+    default: <?xml version="1.0" encoding="UTF-8"?></xml>
+outputs:
+  html-report: # id of output
+    description: "Report of the test results"
+runs:
+  using: "node18"
+  main: "junit-parser.js"

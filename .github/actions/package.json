@@ -1,0 +1,13 @@
+{
+  "name": "junit parser action",
+  "version": "1.0.0",
+  "description": "A clean code converter into skylines",
+  "main": "junit-parser.js",
+  "author": "CarlosLC",
+  "license": "ISC",
+  "dependencies": {
+    "@actions/core": "^1.2.0",
+    "@actions/github": "^1.1.0",
+    "fast-xml-parser": "^4.1.3"
+  }
+}
