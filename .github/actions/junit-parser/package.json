@@ -1,5 +1,6 @@
 {
   "name": "junit parser action",
+  "type": "module",
   "version": "1.0.0",
   "description": "A clean code converter into skylines",
   "main": "junit-parser.js",
