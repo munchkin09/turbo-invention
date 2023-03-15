@@ -1,8 +1,5 @@
-const {getNegativeDataFrom, normalizeNegativeData} = require('../domain/parser');
+const builder = require('../domain/parser');
 
-module.exports = function () {
-    return {
-        getNegativeDataFrom,
-        normalizeNegativeData,
-    };
+module.exports = function (options) {
+    return builder(options);
 };

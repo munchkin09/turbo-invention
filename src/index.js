@@ -7,12 +7,11 @@ const {checkOptions} = require('./application/configuration');
 module.exports = main;
 
 async function main(url, optionsFilepath) {
-    const {getNegativeDataFrom, normalizeNegativeData} = parserManager();
-    const {hydrateHorizontalData} = hydratorManager();
-
-    console.log('CleanCrapper is running...');
+    console.log('CleanCrappers is running...');
     try {
         const options = await checkOptions(optionsFilepath);
+        const {getNegativeDataFrom, normalizeNegativeData} = parserManager(options);
+        const {hydrateHorizontalData} = hydratorManager();
         const fullFileData = await getFileFromUrl(url);
         const negativeData = await getNegativeDataFrom(fullFileData, options);
         const horizontalData = await normalizeNegativeData(negativeData);
@@ -25,11 +24,11 @@ async function main(url, optionsFilepath) {
 }
 
 async function ouputResult(hydratedHorizontalData, options) {
-    if (options.output === 'console') {
+    if (options.output.type === 'console') {
         hydratedHorizontalData.forEach(line => {
             console.log(line.line);
         });
-        return Promise.resolve();
+        return;
     }
 
     return fs.writeFile('output.txt', hydratedHorizontalData);
