@@ -8,7 +8,8 @@ describe('File Manager', () => {
         // Given
         const expectedResult = await fs.readFile(path.resolve('test/fixtures/expectedOutputFromNegativeData.txt'), 'utf8');
         const input = await fs.readFile(path.resolve('test/fixtures/code.js'), 'utf8');
-        const {getNegativeDataFrom} = parserManager();
+        const options = await fs.readFile(path.resolve('test/fixtures/parser/config.json'), 'utf8');
+        const {getNegativeDataFrom} = parserManager(options);
         // When
         const result = await getNegativeDataFrom(input);
 
@@ -20,7 +21,9 @@ describe('File Manager', () => {
         // Given
         const input = (await fs.readFile(path.resolve('test/fixtures/expectedOutputFromNegativeData.txt'), 'utf8')).toString().split(',');
         const expectedResult = (await fs.readFile(path.resolve('test/fixtures/expectedOutputFromNormalizedData.txt'), 'utf8'));
-        const {normalizeNegativeData} = parserManager();
+        const options = JSON.parse(await fs.readFile(path.resolve('test/fixtures/parser/config.json'), 'utf8'));
+        
+        const {normalizeNegativeData} = parserManager(options);
         // When
         const result = await normalizeNegativeData(input);
 
