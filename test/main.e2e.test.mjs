@@ -16,6 +16,7 @@ describe('Test execution interfaces', () => {
   });
 
   it('should output on terminal a proper cleancrapper with given input', async () => {
+    // Given
     const executionPath = path.resolve('bin','bash.js');
     const url = 'https://raw.githubusercontent.com/munchkin09/node-csgo/master/handlers/player.js';
     const configurationPath = path.resolve('test','fixtures', 'configuration','config.json');
@@ -23,23 +24,24 @@ describe('Test execution interfaces', () => {
 
     axios.get.mockResolvedValue(response);
 
+    // When
     await execute(url, configurationPath);
 
-    
-    expect(log).toBeCalledWith('CleanCrapper is running...');
-    expect(log).toBeCalledWith('########I#I#I######');
-    expect(log).toBeCalledWith('########I#I#I######');
-    expect(log).toBeCalledWith('########I#I#I######');
-    expect(log).toBeCalledWith('########I#I#I######');
-    expect(log).toBeCalledWith('#######IIIIIII#I###');
-    expect(log).toBeCalledWith('#######IIIIIII#I###');
-    expect(log).toBeCalledWith('#######IIIIIII#I###');
-    expect(log).toBeCalledWith('#######IIIIIII#I###');
-    expect(log).toBeCalledWith('##III#IIIIIIII#II##');
-    expect(log).toBeCalledWith('##III#IIIIIIII#II##');
-    expect(log).toBeCalledWith('##III#IIIIIIII#II##');
-    expect(log).toBeCalledWith('##III#IIIIIIII#II##');
-    expect(log).toBeCalledWith('__¡¡¡_¡¡¡¡¡¡¡¡_¡¡__');
+    // Then
+    expect(log.mock.calls[0][0]).toBe('CleanCrappers is running...');
+    expect(log.mock.calls[1][0]).toBe('########I#I#I######');
+    expect(log.mock.calls[2][0]).toBe('########I#I#I######');
+    expect(log.mock.calls[3][0]).toBe('########I#I#I######');
+    expect(log.mock.calls[4][0]).toBe('########I#I#I######');
+    expect(log.mock.calls[5][0]).toBe('#######IIIIIII#I###');
+    expect(log.mock.calls[6][0]).toBe('#######IIIIIII#I###');
+    expect(log.mock.calls[7][0]).toBe('#######IIIIIII#I###');
+    expect(log.mock.calls[8][0]).toBe('#######IIIIIII#I###');
+    expect(log.mock.calls[9][0]).toBe('##III#IIIIIIII#II##');
+    expect(log.mock.calls[10][0]).toBe('##III#IIIIIIII#II##');
+    expect(log.mock.calls[11][0]).toBe('##III#IIIIIIII#II##');
+    expect(log.mock.calls[12][0]).toBe('##III#IIIIIIII#II##');
+    expect(log.mock.calls[13][0]).toBe('▁▁¡¡¡▁¡¡¡¡¡¡¡¡▁¡¡▁▁');
   });
 
 });
