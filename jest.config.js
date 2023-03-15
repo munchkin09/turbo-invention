@@ -2,11 +2,11 @@ module.exports = {
     verbose: true,
     testEnvironment: 'node',
     testMatch: [
-        '**/*.test.js',
+        '**/*.test.mjs',
     ],
     collectCoverage: true,
     collectCoverageFrom: [
-        'src/**/*.js',
+        'src/**/*.mjs',
     ],
     coverageDirectory: 'coverage',
     coverageReporters: [
@@ -23,4 +23,5 @@ module.exports = {
         ['jest-junit', {outputDirectory: 'test-results'}],
         ['github-actions', {silent: false}, 'summary', 'jest-junit'],
     ],
+    transform: {},
 };
