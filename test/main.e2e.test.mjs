@@ -1,11 +1,11 @@
-const path = require('path');
+import path from 'path';
 
-const fs = require('fs-extra');
-const axios = require('axios');
+import fs from 'fs-extra';
+import axios from 'axios';
 
 jest.mock('axios');
 
-const execute = require('../src/index');
+import execute from '../src/index.mjs';
 
 describe('Test execution interfaces', () => {
 

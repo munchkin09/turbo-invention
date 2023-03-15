@@ -1,7 +1,7 @@
-const path = require('path');
-const fs = require('fs-extra');
+import path from 'path';
+import fs from 'fs-extra';
 
-const parserManager = require('../src/application/parserManager');
+import parserManager from '../src/application/parserManager';
 
 describe('File Manager', () => {
     it('should return array with negative data when a valid input is given', async () => {

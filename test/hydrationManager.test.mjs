@@ -1,7 +1,7 @@
-const path = require('path');
-const fs = require('fs-extra');
+import path from 'path';
+import fs from 'fs-extra';
 
-const hydratorManager = require('../src/application/hydratorManager');
+import hydratorManager from '../src/application/hydratorManager.mjs';
 
 describe('File Manager', () => {
 

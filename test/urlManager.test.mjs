@@ -1,11 +1,12 @@
-const path = require('path');
+import path from 'path';
 
-const axios = require('axios');
-const fs = require('fs-extra');
+import {jest} from '@jest/globals';
+import axios from 'axios';
+import fs from 'fs-extra';
 
 jest.mock('axios');
 
-const {getFileFromUrl} = require('../src/application/urlContentManager');
+import {getFileFromUrl} from '../src/application/urlContentManager.mjs';
 
 describe('Url Manager', () => {
     beforeEach(() => {
