@@ -1,6 +1,8 @@
 import path from 'path';
 import fs from 'fs-extra';
 
+import {jest} from '@jest/globals';
+
 import { checkOptions } from '../src/application/configuration.mjs';
 
 describe('Options parser', () => {

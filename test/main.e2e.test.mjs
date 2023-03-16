@@ -1,18 +1,27 @@
 import path from 'path';
 
+import {jest} from '@jest/globals';
+
 import fs from 'fs-extra';
 import axios from 'axios';
-
-jest.mock('axios');
+import MockAdapter from "axios-mock-adapter";
 
 import execute from '../src/index.mjs';
 
 describe('Test execution interfaces', () => {
 
   let log;
+  let mock;
+  beforeAll(() => {
+    mock = new MockAdapter(axios);
+  });
   
   beforeEach(() => {
       log = jest.spyOn(console, "log").mockImplementation(() => {});
+  });
+
+  afterEach(() => {
+    mock.reset();
   });
 
   it('should output on terminal a proper cleancrapper with given input', async () => {
@@ -21,14 +30,13 @@ describe('Test execution interfaces', () => {
     const url = 'https://raw.githubusercontent.com/munchkin09/node-csgo/master/handlers/player.js';
     const configurationPath = path.resolve('test','fixtures', 'configuration','config.json');
     const response = {status: 200, data: await fs.readFile(path.resolve('test/fixtures/code.js'))};
-
-    axios.get.mockResolvedValue(response);
+    mock.onGet(`${url}`).reply(response.status, response.data);
 
     // When
     await execute(url, configurationPath);
 
     // Then
-    expect(log.mock.calls[0][0]).toBe('CleanCrappers is running...');
+    expect(log.mock.calls[0][0]).toBe('CleanCrapper is running...');
     expect(log.mock.calls[1][0]).toBe('########I#I#I######');
     expect(log.mock.calls[2][0]).toBe('########I#I#I######');
     expect(log.mock.calls[3][0]).toBe('########I#I#I######');

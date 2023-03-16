@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs-extra';
 
-import parserManager from '../src/application/parserManager';
+import parserManager from '../src/application/parserManager.mjs';
 
 describe('File Manager', () => {
     it('should return array with negative data when a valid input is given', async () => {

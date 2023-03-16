@@ -388,15 +388,5 @@
       "_",
       "_"
     ]
-  },
-  {
-    "line": "",
-    "index": 13,
-    "numberOfFloors": 0,
-    "numberOfClouds": 0,
-    "numberOfFoundations": 0,
-    "numberOfStreets": 0,
-    "numberOfTotalCharacters": 0,
-    "indivdualPixeldData": []
   }
 ]
