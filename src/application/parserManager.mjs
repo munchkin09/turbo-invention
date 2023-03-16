@@ -1,8 +1,5 @@
-import {getNegativeDataFrom, normalizeNegativeData} from '../domain/parser.mjs';
+import parser from '../domain/parser.mjs';
 
-export default function () {
-    return {
-        getNegativeDataFrom,
-        normalizeNegativeData,
-    };
+export default function (options) {
+    return parser(options);
 }

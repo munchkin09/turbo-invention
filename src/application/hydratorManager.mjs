@@ -1,8 +1,5 @@
-import {hydrateHorizontalData, hydratePixelData} from '../domain/pixelsHydration.mjs';
+import hydration from '../domain/pixelsHydration.mjs';
 
-export default function () {
-    return {
-        hydrateHorizontalData,
-        hydratePixelData,
-    };
+export default function (options) {
+    return hydration(options);
 }

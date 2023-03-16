@@ -8,16 +8,15 @@ import {checkOptions} from './application/configuration.mjs';
 export default main;
 
 async function main(url, optionsFilepath) {
-    const {getNegativeDataFrom, normalizeNegativeData} = parserManager();
-    const {hydrateHorizontalData} = hydratorManager();
-
     console.log('CleanCrapper is running...');
     try {
         const options = await checkOptions(optionsFilepath);
+        const {getNegativeDataFrom, normalizeNegativeData} = parserManager(options);
+        const {hydrateLayersWith} = hydratorManager(options);
         const fullFileData = await getFileFromUrl(url);
         const negativeData = await getNegativeDataFrom(fullFileData, options);
         const horizontalData = await normalizeNegativeData(negativeData);
-        const hydratedHorizontalData = await hydrateHorizontalData(horizontalData);
+        const hydratedHorizontalData = await hydrateLayersWith(horizontalData);
 
         await ouputResult(hydratedHorizontalData, options);
     } catch (e) {
@@ -26,7 +25,7 @@ async function main(url, optionsFilepath) {
 }
 
 async function ouputResult(hydratedHorizontalData, options) {
-    if (options.output === 'console') {
+    if (options.output.type === 'console') {
         hydratedHorizontalData.forEach(line => {
             console.log(line.line);
         });

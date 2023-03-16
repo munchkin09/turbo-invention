@@ -7,8 +7,18 @@ const defaultOptions = {
     style: 'ascii',
     tabsInterpolation: 4,
     spaces: 4,
-    output: 'console',
+    output: {
+        type: 'console',
+        chars: {
+            cloud: '#',
+            street: '▁',
+            building: 'I',
+            foundation: '¡',
+        },
+    },
 };
+
+const acceptedOutputTypes = ['console', 'file'];
 
 async function checkOptions(optionsFilepath) {
     let currentOptions = {};
@@ -34,7 +44,7 @@ async function checkOptions(optionsFilepath) {
         throw new Error('No output was provided');
     }
 
-    if (currentOptions.output !== 'console' && currentOptions.output !== 'file') {
+    if (acceptedOutputTypes.indexOf(currentOptions.output.type) === -1) {
         throw new Error(`Output not supported Given: ${currentOptions.output} Supported: console, file`);
     }
 
@@ -61,6 +71,13 @@ async function checkOptions(optionsFilepath) {
     if (currentOptions.spaces === undefined) {
         currentOptions.spaces = defaultOptions.spaces;
     }
+
+    currentOptions.output.chars = {
+        cloud: defaultOptions.output.chars.cloud,
+        street: defaultOptions.output.chars.street,
+        building: defaultOptions.output.chars.building,
+        foundation: defaultOptions.output.chars.foundation,
+    };
 
     return currentOptions;
 }
