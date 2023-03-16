@@ -29,11 +29,11 @@ Just skylines generated with the tabs & spaces from your files code
 - node v18
 - clone this repo
 ```bash
-    git clone https://github.com/munchkin09/turbo-invention.git
+git clone https://github.com/munchkin09/turbo-invention.git
 ```
 - run npm installation
 ```bash 
-    npm i
+npm i
 ```
 
 ### Use
@@ -41,19 +41,24 @@ Just skylines generated with the tabs & spaces from your files code
 Provide a valid url pointing to raw file code and a filepath to a json configuration file with this format
 
 ```json
-        {
-            "type": "skyline<optional>",
-            "style": "ascii<optional>",
-            "tabsInterpolation": "Number<optional>",
-            "spaces": "Number<optional>",
-            "output": "console|file"
+{
+    "type": "skyline",
+    "style": "ascii",
+    "tabsInterpolation": 4,
+    "spaces": 4,
+    "output": {
+        "type": "console",
+        "chars": {
+            "cloud": "#",
+            "street": "▁",
+            "building": "I",
+            "foundation": "¡"
         }
+    }
+}
 ```
 Execute from the root with:
 ```bash
-    bin/bash <url> <options filepath>
+bin/bash <url> <options filepath>
 ```
 
-Enjoy the output in your terminal :stuck_out_tongue_winking_eye:
-
-Docs are W.I.P.
