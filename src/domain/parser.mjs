@@ -17,6 +17,7 @@ export default function ({output}) {
             });
             return result;
         },
+        // [0,0,4,8,4,0]
         normalizeNegativeData(negativeData) {
             const maxHeigth = Math.max(...negativeData);
             const result = new Array(maxHeigth + 1).fill(0).map(() => []);

@@ -20,24 +20,28 @@ const defaultOptions = {
 
 const acceptedOutputTypes = ['console', 'file'];
 
-async function checkOptions(optionsFilepath) {
+async function checkOptions(optionsFilepathOrObject) {
     let currentOptions = {};
-    if (optionsFilepath === undefined || optionsFilepath === null) {
+    if (optionsFilepathOrObject === undefined || optionsFilepathOrObject === null) {
         console.warn('No path given. Using default options');
         return defaultOptions;
     }
 
-    const pathToOpen = path.resolve(optionsFilepath);
-    if (!(await fs.exists(pathToOpen))) {
-        console.warn('Path given does not exists. Using default options');
-        return defaultOptions;
-    }
+    if (typeof optionsFilepathOrObject === 'string') {
+        const pathToOpen = path.resolve(optionsFilepathOrObject);
+        if (!(await fs.exists(pathToOpen))) {
+            console.warn('Path given does not exists. Using default options');
+            return defaultOptions;
+        }
 
-    try {
-        currentOptions = {...JSON.parse((await fs.readFile(pathToOpen, 'utf8')))};
-    } catch (error) {
-        console.warn(`Cannot parse options file, using default options. Original error was: ${error}`);
-        return defaultOptions;
+        try {
+            currentOptions = {...JSON.parse((await fs.readFile(pathToOpen, 'utf8')))};
+        } catch (error) {
+            console.warn(`Cannot parse options file, using default options. Original error was: ${error}`);
+            return defaultOptions;
+        }
+    } else {
+        currentOptions = {...optionsFilepathOrObject};
     }
 
     if (currentOptions.output === undefined) {
