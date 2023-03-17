@@ -3,13 +3,13 @@ import fs from 'fs-extra';
 
 import {jest} from '@jest/globals';
 
-import { checkOptions } from '../src/application/configuration.mjs';
+import { checkOptions } from '../../src/application/configuration.mjs';
 
 describe('Options parser', () => {
 
     it('Should return same configuration as output when given input is valid', async () => {
         // Given
-        const input = await fs.readFile(path.resolve('test/fixtures/configuration/options.json'), 'utf8');
+        const input = await fs.readFile(path.resolve('test/fixtures/application/configuration/options.json'), 'utf8');
 
         // When
         const result = await checkOptions(input);
@@ -25,7 +25,7 @@ describe('Options parser', () => {
     ])
     ('Should return default options when partial config is given(skipping %s)', async (name, filename, evaluatedValue) => {
          // Given
-        const input = `test/fixtures/configuration/${filename}`;
+        const input = `test/fixtures/application/configuration/${filename}`;
 
          // When
         const result = await checkOptions(input);
@@ -36,7 +36,7 @@ describe('Options parser', () => {
 
     it('Should return default options when partial config is given(giving only mandatory options)', async () => {
         // Given
-        const input = 'test/fixtures/configuration/config_without_optionals.json';
+        const input = 'test/fixtures/application/configuration/config_without_optionals.json';
 
         // When
         const result = await checkOptions(input);
@@ -64,7 +64,7 @@ describe('Options parser', () => {
         it.each([
             ['not a valid json', undefined, 'No path given. Using default options'],
             ['json given dont exists', 'path_no_exists', 'Path given does not exists. Using default options'],
-            ['unparseable json', 'test/fixtures/configuration/config_invalid.json', 'Cannot parse options file, using default options. Original error was: SyntaxError: Unexpected token s in JSON at position 0'],
+            ['unparseable json', 'test/fixtures/application/configuration/config_invalid.json', 'Cannot parse options file, using default options. Original error was: SyntaxError: Unexpected token s in JSON at position 0'],
 
 
         ])
@@ -81,7 +81,7 @@ describe('Options parser', () => {
 
         it('Should throw an error when the input is a valid json but dont have output option', async () => {
             // Given
-            const input = 'test/fixtures/configuration/config_without_output.json';
+            const input = 'test/fixtures/application/configuration/config_without_output.json';
 
             // When
             try {

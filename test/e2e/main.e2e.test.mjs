@@ -6,31 +6,32 @@ import fs from 'fs-extra';
 import axios from 'axios';
 import MockAdapter from "axios-mock-adapter";
 
-import execute from '../src/index.mjs';
+import execute from '../../src/index.mjs';
 
 describe('Test execution interfaces', () => {
 
   let log;
-  let mock;
+  let axiosMock;
+
   beforeAll(() => {
-    mock = new MockAdapter(axios);
+    axiosMock = new MockAdapter(axios);
   });
-  
+
   beforeEach(() => {
       log = jest.spyOn(console, "log").mockImplementation(() => {});
   });
 
   afterEach(() => {
-    mock.reset();
+    axiosMock.reset();
   });
 
   it('should output on terminal a proper cleancrapper with given input', async () => {
     // Given
     const executionPath = path.resolve('bin','bash.js');
     const url = 'https://raw.githubusercontent.com/munchkin09/node-csgo/master/handlers/player.js';
-    const configurationPath = path.resolve('test','fixtures', 'configuration','config.json');
-    const response = {status: 200, data: await fs.readFile(path.resolve('test/fixtures/code.js'))};
-    mock.onGet(`${url}`).reply(response.status, response.data);
+    const configurationPath = path.resolve('test','fixtures', 'e2e', 'configuration.json');
+    const response = {status: 200, data: await fs.readFile(path.resolve('test/fixtures/e2e/code.js'))};
+    axiosMock.onGet(`${url}`).reply(response.status, response.data);
 
     // When
     await execute(url, configurationPath);
