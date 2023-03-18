@@ -2,6 +2,8 @@ const path = require('path');
 
 const fs = require('fs-extra');
 
+const { colorizeCharacter} = require('./colorizer');
+
 const defaultOptions = {
     type: 'skyline',
     style: 'ascii',
@@ -72,10 +74,10 @@ module.exports = {
         }
 
         currentOptions.output.chars = {
-            cloud: defaultOptions.output.chars.cloud,
-            street: defaultOptions.output.chars.street,
-            building: defaultOptions.output.chars.building,
-            foundation: defaultOptions.output.chars.foundation,
+            cloud: colorizeCharacter(defaultOptions.output.chars.cloud),
+            street:  colorizeCharacter(defaultOptions.output.chars.street),
+            building:  colorizeCharacter(defaultOptions.output.chars.building),
+            foundation:  colorizeCharacter(defaultOptions.output.chars.foundation),
         };
 
         return currentOptions;
