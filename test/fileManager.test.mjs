@@ -1,7 +1,7 @@
-const path = require('path');
-const fs = require('fs-extra');
+import path from 'path';
+import fs from 'fs-extra';
 
-const parserManager = require('../src/application/parserManager');
+import parserManager from '../src/application/parserManager.mjs';
 
 describe('ASCII parser Manager', () => {
     it('should return array with negative data when a valid input is given', async () => {
@@ -9,7 +9,7 @@ describe('ASCII parser Manager', () => {
         const expectedResult = await fs.readFile(path.resolve('test/fixtures/expectedOutputFromNegativeData.txt'), 'utf8');
         const input = await fs.readFile(path.resolve('test/fixtures/code.js'), 'utf8');
         const options = await fs.readFile(path.resolve('test/fixtures/parser/config.json'), 'utf8');
-        const {getNegativeDataFrom} = parserManager(options);
+        const {getNegativeDataFrom} = await parserManager(options);
         // When
         const result = await getNegativeDataFrom(input);
 

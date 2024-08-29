@@ -1,17 +1,14 @@
-const fs = require('fs-extra');
-const {getFileFromUrl} = require('./application/urlContentManager');
-const parserManager = require('./application/parserManager');
-const hydratorManager = require('./application/hydratorManager');
-const {checkOptions} = require('./application/configuration');
+import fs from 'fs-extra';
+import {getFileFromUrl} from './application/urlContentManager.mjs';
+import parserManager from './application/parserManager.mjs';
+import {hydrateHorizontalData} from './application/hydratorManager.mjs';
+import {checkOptions} from './application/configuration.mjs';
 
-module.exports = main;
-
-async function main(url, optionsFilepath) {
+export default async function main(url, optionsFilepath) {
     console.log('CleanCrappers is running...');
     try {
         const options = await checkOptions(optionsFilepath);
         const {getNegativeDataFrom, normalizeNegativeData} = parserManager(options);
-        const {hydrateHorizontalData} = hydratorManager();
         const fullFileData = await getFileFromUrl(url);
         const negativeData = await getNegativeDataFrom(fullFileData, options);
         const horizontalData = await normalizeNegativeData(negativeData);

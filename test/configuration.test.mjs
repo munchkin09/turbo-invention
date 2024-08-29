@@ -1,7 +1,8 @@
-const path = require('path');
-const fs = require('fs-extra');
+import {jest} from '@jest/globals';
+import path from 'path';
+import fs from 'fs-extra';
 
-const {checkOptions} = require('../src/application/configuration');
+import checkOptions from '../src/application/configuration.mjs';
 
 describe('Options parser', () => {
 

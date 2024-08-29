@@ -1,12 +1,13 @@
-module.exports = {
+export default {
     verbose: true,
+    transform: {},
     testEnvironment: 'node',
     testMatch: [
-        '**/*.test.js',
+        '**/*.test.mjs',
     ],
     collectCoverage: true,
     collectCoverageFrom: [
-        'src/**/*.js',
+        'src/**/*.mjs',
     ],
     coverageDirectory: 'coverage',
     coverageReporters: [

@@ -1,5 +1,5 @@
 
-module.exports = function (options) {
+export default function (options) {
     return {
         async getNegativeDataFrom(fileContent) {
             // Get spaces and tabs from each line
@@ -53,4 +53,4 @@ module.exports = function (options) {
             return returnValue;
         },
     };
-};
+}

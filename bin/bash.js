@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const basicExecutor = require('../src/index');
+import basicExecutor from '../src/index');
 const url = process.argv[2];
 const configurationPath = process.argv[3];
 

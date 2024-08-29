@@ -9,7 +9,6 @@ export default async function parserManager(options) {
     }
 
     if (options.style === 'EMOJI' || options.style === 'emoji') {
-        console.log("ENTRO")
         selectedParser = emoParser(options);
     }
 
