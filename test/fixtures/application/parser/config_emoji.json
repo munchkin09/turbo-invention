@@ -1,0 +1,15 @@
+{
+    "type": "skyline",
+    "style": "emoji",
+    "tabsInterpolation": 4,
+    "spaces": 4,
+    "output": {
+        "type": "console",
+        "chars": {
+            "street": "🚗",
+            "foundation": "🏫",
+            "building": "🏢",
+            "cloud": "⛅"
+        }
+    }
+}

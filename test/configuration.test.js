@@ -62,7 +62,7 @@ describe('Options parser', () => {
         it.each([
             ['not a valid json', undefined, 'No path given. Using default options'],
             ['json given dont exists', 'path_no_exists', 'Path given does not exists. Using default options'],
-            ['unparseable json', 'test/fixtures/configuration/config_invalid.json', 'Cannot parse options file, using default options. Original error was: SyntaxError: Unexpected token s in JSON at position 0'],
+            ['unparseable json', 'test/fixtures/configuration/config_invalid.json', 'Cannot parse options file, using default options. Original error was: SyntaxError: Unexpected token \'s\', "ssss" is not valid JSON'],
 
 
         ])
