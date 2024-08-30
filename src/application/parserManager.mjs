@@ -1,16 +1,16 @@
-import parser from '../domain/ASCII_parser.mjs';
-import emoParser from '../domain/EMOJI_parser.mjs';
+import {asciiParser} from '../domain/ASCII_parser.mjs';
+import {emojiParser} from '../domain/EMOJI_parser.mjs';
 
-export default async function parserManager(options) {
-    let selectedParser = {};
-    console.log(options.style);
-    if (options.style === 'ASCII' || options.style === 'ascii') {
-        selectedParser = parser(options);
+export async function parserManager(options) {
+    let selectedParser = null;
+    const style = options.style.toLowerCase();
+    if (style === 'ascii') {
+        selectedParser = asciiParser(options);
     }
 
-    if (options.style === 'EMOJI' || options.style === 'emoji') {
-        selectedParser = emoParser(options);
+    if (style === 'emoji') {
+        selectedParser = emojiParser(options);
     }
 
-    return Promise.resolve(selectedParser);
+    return selectedParser;
 }

@@ -1,4 +1,4 @@
-export default function ({output}) {
+export function asciiParser({output}) {
     return {
         async getNegativeDataFrom(fileContent) {
             // Get spaces and tabs from each line

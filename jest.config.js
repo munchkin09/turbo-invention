@@ -1,6 +1,5 @@
 export default {
     verbose: true,
-    transform: {},
     testEnvironment: 'node',
     testMatch: [
         '**/*.test.mjs',
@@ -19,8 +18,8 @@ export default {
         'test',
     ],
     reporters: [
-        'default',
         'summary',
+        'jest-silent-reporter',
         ['jest-junit', {outputDirectory: 'test-results'}],
         ['github-actions', {silent: false}, 'summary', 'jest-junit'],
     ],

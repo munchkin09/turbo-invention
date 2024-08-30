@@ -1,6 +1,6 @@
 import {hydrateHorizontalData, hydratePixelData} from '../domain/pixelsHydration.mjs';
 
-export default function () {
+export function hydratorManager() {
     return {
         hydrateHorizontalData,
         hydratePixelData,

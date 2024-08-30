@@ -1,5 +1,5 @@
 
-async function hydrateHorizontalData(horizontalData) {
+export async function hydrateHorizontalData(horizontalData) {
     return Promise.all(horizontalData.split('\n').map(async (line, index) => {
         const regexClouds = line.match(/#/g);
         const numberOfClouds = regexClouds === null ? 0 : regexClouds.length;
@@ -24,13 +24,8 @@ async function hydrateHorizontalData(horizontalData) {
     }));
 }
 
-async function hydratePixelData(fullData) {
+export async function hydratePixelData(fullData) {
     for await (const line of fullData) {
         line.indivdualPixeldData = await Promise.all(line.indivdualPixeldData.map(async (pixel, pixelIndex) => ({pixel, pixelIndex})));
     }
 }
-
-export default {
-    hydrateHorizontalData,
-    hydratePixelData
-};

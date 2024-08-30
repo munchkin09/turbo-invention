@@ -1,4 +1,4 @@
-export default function emoParser({output}) {
+export function emojiParser({output}) {
     return {
         async getNegativeDataFrom(fileContent) {
             // Get spaces and tabs from each line
