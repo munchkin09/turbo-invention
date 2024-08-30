@@ -2,9 +2,6 @@ import {jest} from '@jest/globals';
 import path from 'path';
 
 import fs from 'fs-extra';
-import axios from 'axios';
-
-jest.mock('axios');
 
 import execute from '../src/index.mjs';
 
@@ -22,9 +19,9 @@ describe('Test execution interfaces', () => {
     const url = 'https://raw.githubusercontent.com/munchkin09/node-csgo/master/handlers/player.js';
     const configurationPath = path.resolve('test','fixtures', 'configuration','config.json');
     const response = {status: 200, data: await fs.readFile(path.resolve('test/fixtures/code.js'))};
-
-    axios.get.mockResolvedValue(response);
-
+    jest.unstable_mockModule('axios',() => {
+      get: jest.fn().mockResolvedValue(response);
+    });
     // When
     await execute(url, configurationPath);
 
