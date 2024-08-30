@@ -3,3 +3,4 @@ test-results/
 coverage/
 textoutput.txt
 output.txt
+.DS_Store
