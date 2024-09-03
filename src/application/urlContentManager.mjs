@@ -1,16 +1,12 @@
-import axios from 'axios';
-
 // _ = space between lines
 // \t = tab
 // \s = space
 
 export async function getFileFromUrl(url) {
     // Retrieve file from given url using axios
-    const response = await axios.get(url, {
-        responseType: 'arraybuffer',
-    });
+    const response = await fetch(url);
+    // TODO Make test for error handling
 
-    //TODO Make test for error handling
     if (response.status !== 200) {
         throw new Error('The file could not be retrieved');
     }
@@ -18,10 +14,11 @@ export async function getFileFromUrl(url) {
     // Convert response to plain text
     let fileContent;
     try {
-        //TODO Make test for error handling
-        fileContent = new TextDecoder('utf-8').decode(response.data);
+        // TODO Make test for error handling
+        fileContent = response.data;
     } catch (error) {
-        throw new Error('The file is not a text file', error);
+        console.log(error);
+        // throw new Error('The file is not a text file', error);
     }
 
     return fileContent;
