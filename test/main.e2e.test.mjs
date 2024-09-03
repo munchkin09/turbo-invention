@@ -25,19 +25,19 @@ describe('Test execution interfaces', () => {
 
     // Then
     expect(log.mock.calls[0][0]).toBe('CleanCrappers is running...');
-    expect(log.mock.calls[1][0]).toBe('########I#I#I############');
-    expect(log.mock.calls[2][0]).toBe('########I#I#I############');
-    expect(log.mock.calls[3][0]).toBe('########I#I#I############');
-    expect(log.mock.calls[4][0]).toBe('########I#I#I############');
-    expect(log.mock.calls[5][0]).toBe('#######IIIIIII#I#########');
-    expect(log.mock.calls[6][0]).toBe('#######IIIIIII#I#########');
-    expect(log.mock.calls[7][0]).toBe('#######IIIIIII#I#########');
-    expect(log.mock.calls[8][0]).toBe('#######IIIIIII#I#########');
-    expect(log.mock.calls[9][0]).toBe('##III#IIIIIIII#II########');
-    expect(log.mock.calls[10][0]).toBe('##III#IIIIIIII#II########');
-    expect(log.mock.calls[11][0]).toBe('##III#IIIIIIII#II########');
-    expect(log.mock.calls[12][0]).toBe('##III#IIIIIIII#II########');
-    expect(log.mock.calls[13][0]).toBe('▁▁¡¡¡▁¡¡¡¡¡¡¡¡▁¡¡▁▁▁▁▁▁▁▁');
+    expect(log.mock.calls[1][0]).toBe('########I#I#I######');
+    expect(log.mock.calls[2][0]).toBe('########I#I#I######');
+    expect(log.mock.calls[3][0]).toBe('########I#I#I######');
+    expect(log.mock.calls[4][0]).toBe('########I#I#I######');
+    expect(log.mock.calls[5][0]).toBe('#######IIIIIII#I###');
+    expect(log.mock.calls[6][0]).toBe('#######IIIIIII#I###');
+    expect(log.mock.calls[7][0]).toBe('#######IIIIIII#I###');
+    expect(log.mock.calls[8][0]).toBe('#######IIIIIII#I###');
+    expect(log.mock.calls[9][0]).toBe('##III#IIIIIIII#II##');
+    expect(log.mock.calls[10][0]).toBe('##III#IIIIIIII#II##');
+    expect(log.mock.calls[11][0]).toBe('##III#IIIIIIII#II##');
+    expect(log.mock.calls[12][0]).toBe('##III#IIIIIIII#II##');
+    expect(log.mock.calls[13][0]).toBe('▁▁¡¡¡▁¡¡¡¡¡¡¡¡▁¡¡▁▁');
   });
 
 });
