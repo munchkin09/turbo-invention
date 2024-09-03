@@ -27,7 +27,7 @@
 Just skylines generated with the tabs & spaces from your files code
 
 ### Requirements and installation
-- node v18
+- node v20
 - clone this repo
 ```bash
     git clone https://github.com/munchkin09/turbo-invention.git
