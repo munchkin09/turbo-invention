@@ -1,3 +1,4 @@
+[![CI](https://github.com/munchkin09/turbo-invention/actions/workflows/main.yml/badge.svg?branch=develop)](https://github.com/munchkin09/turbo-invention/actions/workflows/main.yml)
 # Skycrappers
 
 ```bash
