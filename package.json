@@ -1,5 +1,8 @@
 {
   "name": "cleancrappers",
+  "engines": {
+    "node": ">=20.13.1"
+  },
   "version": "1.0.0",
   "description": "A clean code converter into skylines",
   "main": "src/index.mjs",
