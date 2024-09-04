@@ -13,7 +13,7 @@ describe('Url Manager', () => {
     // Given
         const url = 'https://raw.githubusercontent.com/munchkin09/node-csgo/master/handlers/player.js';
         const expectedResult = await fs.readFile(path.resolve('test/fixtures/expectedOutputFromUrl.txt'), 'utf8');
-        const response = {status: 200, data: await fs.readFile(path.resolve('test/fixtures/code.js'), 'utf8')};
+        const response = {status: 200, data: await fs.readFile(path.resolve('test/fixtures/application/urlContentManager/code.js'), 'utf8')};
         jest.spyOn(global, 'fetch').mockResolvedValue(response);
 
         // When
