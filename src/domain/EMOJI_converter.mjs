@@ -1,4 +1,4 @@
-export function emojiParser({output}) {
+export function emojiConverter({output}) {
     return {
         async getNegativeDataFrom(fileContent) {
             // Get spaces and tabs from each line
