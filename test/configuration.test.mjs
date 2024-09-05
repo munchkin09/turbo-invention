@@ -1,7 +1,8 @@
-const path = require('path');
-const fs = require('fs-extra');
+import {jest} from '@jest/globals';
+import path from 'path';
+import fs from 'fs-extra';
 
-const {checkOptions} = require('../src/application/configuration');
+import checkOptions from '../src/application/configuration.mjs';
 
 describe('Options parser', () => {
 
@@ -62,9 +63,7 @@ describe('Options parser', () => {
         it.each([
             ['not a valid json', undefined, 'No path given. Using default options'],
             ['json given dont exists', 'path_no_exists', 'Path given does not exists. Using default options'],
-            ['unparseable json', 'test/fixtures/configuration/config_invalid.json', 'Cannot parse options file, using default options. Original error was: SyntaxError: Unexpected token s in JSON at position 0'],
-
-
+            ['unparseable json', 'test/fixtures/configuration/config_invalid.json', 'Cannot parse options file, using default options. Original error was: SyntaxError: Unexpected token \'s\', "ssss" is not valid JSON'],
         ])
         ('Should throw a warn when the input is %s and fallback into default config', async (name, value, warnMessage) => {
             // Given

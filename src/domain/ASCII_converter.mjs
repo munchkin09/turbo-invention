@@ -1,5 +1,4 @@
-
-module.exports = function (options) {
+export function asciiConverter({output}) {
     return {
         async getNegativeDataFrom(fileContent) {
             // Get spaces and tabs from each line
@@ -18,39 +17,35 @@ module.exports = function (options) {
             });
             return result;
         },
-
+        // [0,0,4,8,4,0]
         normalizeNegativeData(negativeData) {
             const maxHeigth = Math.max(...negativeData);
-            const result = [];
-
-            for (let i = 0; i <= maxHeigth; i++) {
-                result.push([]);
-            }
+            const result = new Array(maxHeigth + 1).fill(0).map(() => []);
 
             negativeData.forEach(line => {
                 const actualHeight = parseInt(line, 10);
-
                 for (let i = 0; i <= maxHeigth; i++) {
                     if (actualHeight === 0 && i === 0) {
-                        result[i].push(options.output.chars.street);
+                        result[i].push(output.chars.street);
                     } else if (i === 0) {
-                        result[i].push(options.output.chars.foundation);
+                        result[i].push(output.chars.foundation);
                     } else if (i <= line && i > 0) {
-                        result[i].push(options.output.chars.building);
+                        result[i].push(output.chars.building);
                     } else if (i >= actualHeight) {
-                        result[i].push(options.output.chars.cloud);
+                        result[i].push(output.chars.cloud);
                     }
                 }
             });
-
             const reversedArray = result.reverse();
             let returnValue = '';
-            reversedArray.forEach(line => {
-                const swap = returnValue.concat(`${line.join('')}\n`);
-                returnValue = swap;
+
+            reversedArray.forEach((line, index) => {
+                const lastChar = index === reversedArray.length - 1 ? '' : '\n';
+                const swap = line.join('') + lastChar;
+                returnValue += swap;
             });
 
             return returnValue;
         },
     };
-};
+}

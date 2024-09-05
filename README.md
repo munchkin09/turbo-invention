@@ -22,11 +22,12 @@
 ***
 
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/munchkin09/turbo-invention/main.yml?style=flat-square) ![GitHub last commit](https://img.shields.io/github/last-commit/munchkin09/turbo-invention?style=flat-square) ![Lines of code](https://img.shields.io/tokei/lines/github/munchkin09/turbo-invention?style=flat-square) ![GitHub repo file count](https://img.shields.io/github/directory-file-count/munchkin09/turbo-invention?style=flat-square)
+[![CI](https://github.com/munchkin09/turbo-invention/actions/workflows/main.yml/badge.svg?branch=develop)](https://github.com/munchkin09/turbo-invention/actions/workflows/main.yml)
 
 Just skylines generated with the tabs & spaces from your files code
 
 ### Requirements and installation
-- node v18
+- node v20
 - clone this repo
 ```bash
     git clone https://github.com/munchkin09/turbo-invention.git

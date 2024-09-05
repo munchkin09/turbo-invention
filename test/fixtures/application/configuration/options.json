@@ -6,11 +6,10 @@
     "output": {
         "type": "console",
         "chars": {
-            "street": "_",
-            "building": "I",
-            "foundation": "¡",
             "cloud": "#",
-            "separator": "!"
+            "street": "▁",
+            "building": "I",
+            "foundation": "¡"
         }
     }
 }

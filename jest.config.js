@@ -1,12 +1,12 @@
-module.exports = {
+export default {
     verbose: true,
     testEnvironment: 'node',
     testMatch: [
-        '**/*.test.js',
+        '**/*.test.mjs',
     ],
     collectCoverage: true,
     collectCoverageFrom: [
-        'src/**/*.js',
+        'src/**/*.mjs',
     ],
     coverageDirectory: 'coverage',
     coverageReporters: [
@@ -18,8 +18,8 @@ module.exports = {
         'test',
     ],
     reporters: [
-        'default',
         'summary',
+        'jest-silent-reporter',
         ['jest-junit', {outputDirectory: 'test-results'}],
         ['github-actions', {silent: false}, 'summary', 'jest-junit'],
     ],

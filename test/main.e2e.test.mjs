@@ -1,11 +1,9 @@
-const path = require('path');
+import {jest} from '@jest/globals';
+import path from 'path';
 
-const fs = require('fs-extra');
-const axios = require('axios');
+import fs from 'fs-extra';
 
-jest.mock('axios');
-
-const execute = require('../src/index');
+import execute from '../src/index.mjs';
 
 describe('Test execution interfaces', () => {
 
@@ -20,10 +18,8 @@ describe('Test execution interfaces', () => {
     const executionPath = path.resolve('bin','bash.js');
     const url = 'https://raw.githubusercontent.com/munchkin09/node-csgo/master/handlers/player.js';
     const configurationPath = path.resolve('test','fixtures', 'configuration','config.json');
-    const response = {status: 200, data: await fs.readFile(path.resolve('test/fixtures/code.js'))};
-
-    axios.get.mockResolvedValue(response);
-
+    const response = {status: 200, data: await fs.readFile(path.resolve('test/fixtures/code.js'), 'utf8')};
+    jest.spyOn(global, 'fetch').mockResolvedValue(response);
     // When
     await execute(url, configurationPath);
 

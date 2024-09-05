@@ -1,0 +1,9 @@
+{
+    "type": "skyline",
+    "style": "ascii",
+    "tabsInterpolation": 4,
+    "spaces": 4,
+    "output": {
+        "type": "console"
+    }
+}
